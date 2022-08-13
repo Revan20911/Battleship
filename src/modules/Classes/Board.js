@@ -8,7 +8,20 @@ export default class Board{
 
     defaultBoardProps(){
         for(let i = 0; i < this.board.length; i++){
-            this.board.push({hit: false, ship: false});
-        }  
+            this.board.push({cellHit: false, cellShip: false});
+        }
     }
+
+    cellHit(cell){
+
+        this.board[cell].cellHit = true;
+
+    }
+
+    cellShip(cell){
+
+        this.board[cell].cellShip = true;
+    }
+
+    
 }
