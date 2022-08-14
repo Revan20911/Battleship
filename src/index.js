@@ -9,5 +9,6 @@ const render = (() => {
    const player2 = renderBoard(p2);
 
    console.log(player1.pBoard, player2.pBoard);
+   console.log(player1.pBoard.board[0]);
 
 })();

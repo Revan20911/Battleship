@@ -19,22 +19,19 @@ export const renderBoard = ((grid) =>{
             let gridItem = document.createElement('div');
             grid.appendChild(gridItem);
             grid.appendChild(gridItem).className = "cell";
-            // grid.appendChild(gridItem).addEventListener('click', () => {
+            grid.appendChild(gridItem).addEventListener('click', () => {
 
-            // });
+                
+
+            });
 
             board.push(gridItem,x,y);
-
-            
         }
-
     }
-
     const pBoard = new Board(board);
 
-    return {pBoard};
 
-    
+    return {pBoard};
 });
 
 
