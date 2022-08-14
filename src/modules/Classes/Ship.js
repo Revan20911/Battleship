@@ -2,7 +2,7 @@ export class Ship{
     constructor(len, name, position){
 
         this.name = name;
-        this.position = position;
+        this.position = position || [];
         this.damage = [];
         this.len = len;
         this.isSunk = this.CheckIfSunk();
