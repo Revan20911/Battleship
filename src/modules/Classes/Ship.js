@@ -10,7 +10,8 @@ export class Ship{
     }
 
     hit(index){
-        this.damage.push(index);
+        this.damage
+            .push(index);
     }
 
     CheckIfSunk(){

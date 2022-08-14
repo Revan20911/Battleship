@@ -64,9 +64,9 @@ const shipFactory = (() => {
     
             for(let i = 0; i < fleetShip.len; i++){
 
-                fleetShip.position.push([x + i, y]);
-                
-                clickedCell.color();
+                fleetShip
+                    .position
+                    .push([x + i, y]);
                 
             }
             setCells(board, fleetShip.position);
@@ -75,7 +75,9 @@ const shipFactory = (() => {
 
             for(let i = 0; i < fleetShip.len; i++){
 
-                fleetShip.position.push([x, y + i]);
+                fleetShip
+                    .position
+                    .push([x, y + i]);
                 
             }
             setCells(board, fleetShip.position);
@@ -91,7 +93,6 @@ const shipFactory = (() => {
 
                 if(cell.x == position[i][0] && cell.y == position[i][1]){
 
-                    console.log('Match Found')
                     cell.hasShip = true;
                     cell.color();
                     console.log(cell);
@@ -103,8 +104,6 @@ const shipFactory = (() => {
     }
 
    return { placeShip };
-
-
 })();
 
 export {generateFleet, shipFactory};

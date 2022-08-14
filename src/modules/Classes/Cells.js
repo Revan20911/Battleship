@@ -9,6 +9,12 @@ export class Cells{
 
     color(){
 
-        this.element.style.backgroundColor = 'red';
+        this.element
+            .style
+            .backgroundColor = 'red';
+    }
+
+    isOccupied(){
+        return this.hasShip;
     }
 }

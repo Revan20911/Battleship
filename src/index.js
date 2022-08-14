@@ -8,9 +8,6 @@ const axis = 'y';
 const render = (() => {
 
    const player1 = renderBoard(p1, axis);
-   console.log(player1.pBoard);
    const player2 = renderBoard(p2, axis);
-
-   
 
 })();
