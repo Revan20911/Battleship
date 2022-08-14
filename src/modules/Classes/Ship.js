@@ -15,9 +15,9 @@ export class Ship{
     }
 
     CheckIfSunk(){
+        
         if(this.damage.length == this.len){ this.isSunk == true; }
-        else{ this.isSunk == false; }
-        return this.isSunk;
+        else { this.isSunk == false; }
     }
 
 }
