@@ -1,4 +1,5 @@
 import { renderBoard } from "./domBuilder";
+import { shipFactory } from "./Factories/shipFactory";
 
 function gameStart(){
 
@@ -19,7 +20,3 @@ function restartGame(){
 
 }
 
-function setOpponentShips(){
-
-
-}
