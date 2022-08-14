@@ -46,6 +46,7 @@ const generateFleet = (() => {
 })();
 
 const shipFactory = (() => {
+
     function placeShip(fleetShip, clickedCell, axis, board){
 
         let x = clickedCell.x;
@@ -70,8 +71,11 @@ const shipFactory = (() => {
         setCells(board, fleetShip.position);
     }
     function setCells(board, position){
+
         board.board.forEach((cell) => {
+
             for(let i = 0; i < position.length; i++){
+                
                 if(cell.x == position[i][0] && cell.y == position[i][1]){
 
                     cell.hasShip = true;
