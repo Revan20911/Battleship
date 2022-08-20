@@ -4,10 +4,7 @@ export default class Board{
 
         this.board  =  board || [];
     }
-    cellHit(cell){
-
-        this.board[cell].Hit = true;
-    }
+  
     cellShip(cell){
 
         cell.hasShip = true;

@@ -6,11 +6,10 @@ import {
 from './Factories/shipFactory';
 
 import { Cells } from "./Classes/Cells";
-import { gameStart, opponentTurn} from "./Game";
+import { gameStart, opponentTurn, declareWinner} from "./Game";
 
 
-
-export const renderBoard = ((grid, axis,  player) =>{
+const renderBoard = ((grid, axis,  player) =>{
 
     const board = [];
     const cols = 10;
@@ -74,7 +73,7 @@ export const renderBoard = ((grid, axis,  player) =>{
                 .appendChild(gridItem)
                 .addEventListener('click', function playerTurn(){
 
-                    const playerScore = 0;
+                    let playerScore = 0;
 
                     if(cell.hasShip == true){
                 
@@ -90,7 +89,7 @@ export const renderBoard = ((grid, axis,  player) =>{
                         cell.element.style.backgroundColor = 'blue';
                     }
 
-                    opponentTurn()
+                    opponentTurn();
                 
                 });
 
@@ -112,5 +111,24 @@ export const renderBoard = ((grid, axis,  player) =>{
 });
 
 
+const render = (() => {
 
+    const axis = 'y';
+    const p1 = document.querySelector('#player1');
+    const playerBoard = renderBoard(p1, axis, '');
 
+    // const restartBtn = document.querySelector('#restart');
+    // restartBtn.addEventListener('click', restartGame);
+
+    // const axisBtn = document.querySelector('#axis');
+    // axisBtn.addEventListener('click', changeAxis);
+
+    const opponentBoardGrid = document.querySelector('#player2');
+
+    const opponentBoard = renderBoard(opponentBoardGrid, 'y', 'opponent').pBoard;
+
+    return {opponentBoard, playerBoard};
+    
+})();
+
+export {render};

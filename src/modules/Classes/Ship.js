@@ -3,22 +3,22 @@ export class Ship{
 
         this.name = name;
         this.position = position || [];
-        this.damage = [];
+        // this.damage = [];
         this.len = len;
-        this.isSunk = this.CheckIfSunk();
+        // this.isSunk = this.CheckIfSunk();
 
     }
 
-    hit(index){
-        this.damage
-            .push(index);
-    }
+    // hit(index){
+    //     this.damage
+    //         .push(index);
+    // }
 
-    CheckIfSunk(){
+    // CheckIfSunk(){
         
-        if(this.damage.length == this.len){ this.isSunk == true; }
-        else { this.isSunk == false; }
-    }
+    //     if(this.damage.length == this.len){ this.isSunk == true; }
+    //     else { this.isSunk == false; }
+    // }
 
 }
 

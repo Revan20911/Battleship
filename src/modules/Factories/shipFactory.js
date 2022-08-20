@@ -188,11 +188,8 @@ const shipFactory = (() => {
     function randomCell(board){
 
         var len = 5;
-
         let cellArr = [];
 
-        
-        
         for(let i = 0; i < len; i++){
 
             var rand = Math.floor(Math.random() * 99);
@@ -226,10 +223,7 @@ const shipFactory = (() => {
             break;
         }
         
-
-            
         console.log(ship);
-        
         return ship;
     
     }

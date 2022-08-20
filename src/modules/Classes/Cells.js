@@ -16,10 +16,4 @@ export class Cells{
             .backgroundColor = 'red';
     }
 
-    checkCell(){
-
-        
-    }
-
-  
 }

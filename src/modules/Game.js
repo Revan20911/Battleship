@@ -1,51 +1,36 @@
-import { renderBoard } from "./domBuilder";
+import { render } from "./domBuilder";
 import { generateFleet, shipFactory } from "./Factories/shipFactory";
-
 
 //TODO: Add ability to swtch the axis.
 
 let axis = 'y';
-
-const render = (() => {
-
-    const p1 = document.querySelector('#player1');
-    const player1 = renderBoard(p1, axis, '');
-
-    // const restartBtn = document.querySelector('#restart');
-    // restartBtn.addEventListener('click', restartGame);
-
-    // const axisBtn = document.querySelector('#axis');
-    // axisBtn.addEventListener('click', changeAxis);
-
-});
-
 function gameStart(){
 
-    const opponentBoardGrid = document.querySelector('#player2');
-
-    const opponentBoard = renderBoard(opponentBoardGrid, 'y', 'opponent').pBoard;
 
     let fleet = generateFleet().playerFleet;
 
     for(let i = 0; i < fleet.length; i++){
 
-        shipFactory.placeOpponentShips(fleet[i], 'y', opponentBoard);
+        shipFactory.placeOpponentShips(fleet[i], 'y', render.opponentBoard);
     }
 
 
 }
 
+function opponentTurn(){
 
-function opponentTurn(cell){
+    let opponentScore = 0;
 
-    const opponentScore = 0;
+    var random = Math.floor(Math.random() * 99);
+
+    let cell = render.playerBoard.pBoard.board[random];
 
     if(cell.hasShip == true){
 
         cell.element.style.backgroundColor = 'green';
 
         opponentScore += 1;
-        declareWinner(opponentScore);
+       
 
     }
 
@@ -53,8 +38,6 @@ function opponentTurn(cell){
 
         cell.element.style.backgroundColor = 'blue';
     }
-
-    
 
 }
 
@@ -87,5 +70,5 @@ function changeAxis(){
 
 }
 
-export {gameStart, opponentTurn, declareWinner, restartGame, render};
+export {gameStart, opponentTurn, declareWinner, restartGame};
 
