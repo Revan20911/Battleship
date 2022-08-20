@@ -10,6 +10,6 @@ export default class Board{
     }
     cellShip(cell){
 
-        this.board[cell].Ship = true;
+        cell.hasShip = true;
     }
 }

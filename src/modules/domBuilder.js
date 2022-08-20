@@ -8,14 +8,15 @@ from './Factories/shipFactory';
 import { Cells } from "./Classes/Cells";
 
 
-export const renderBoard = ((grid, axis) =>{
+
+export const renderBoard = ((grid, axis, gameStart) =>{
 
     const board = [];
     const cols = 10;
     const rows = 10;
-    const fleet = generateFleet.playerFleet;
+    const fleet = generateFleet().playerFleet;
 
-    let count = 0;
+    var count = 0;
 
     grid
         .style
@@ -51,8 +52,12 @@ export const renderBoard = ((grid, axis) =>{
                     count++;
     
                     if(count > 4){
-                        console.log('All ships placed');
+                        count = count - fleet.length;
+                        gameStart();
+                        
+                        console.log('All ships placed', count);
 
+                        
                         
                     }
                 }
@@ -69,8 +74,18 @@ export const renderBoard = ((grid, axis) =>{
 
     const pBoard = new Board(board);
 
+    console.log(pBoard);
+
     return {pBoard};
 });
+
+
+function changeListener(grid){
+
+    
+
+
+}
 
 export const gameButtons = (() => {
 

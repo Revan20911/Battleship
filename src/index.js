@@ -1,13 +1,14 @@
 import { renderBoard } from "./modules/domBuilder";
+import { gameStart } from "./modules/Game";
 
 const p1 = document.querySelector('#player1');
-const p2 = document.querySelector('#player2');
+
 
 const axis = 'y';
 
 const render = (() => {
 
-   const player1 = renderBoard(p1, axis);
-   const player2 = renderBoard(p2, axis);
+   const player1 = renderBoard(p1, axis, gameStart);
+   
 
 })();

@@ -3,8 +3,10 @@ export class Cells{
 
         this.x = x;
         this.y = y;
-        this.hasShip = false;
         this.element = element;
+        this.hasShip = false;
+        
+        
     }
 
     color(){
@@ -14,7 +16,10 @@ export class Cells{
             .backgroundColor = 'red';
     }
 
-    isOccupied(){
-        return this.hasShip;
+    checkCell(){
+
+        
     }
+
+  
 }
