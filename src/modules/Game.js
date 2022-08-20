@@ -1,11 +1,29 @@
 import { renderBoard } from "./domBuilder";
 import { generateFleet, shipFactory } from "./Factories/shipFactory";
 
+
+//TODO: Add ability to swtch the axis.
+
+let axis = 'y';
+
+const render = (() => {
+
+    const p1 = document.querySelector('#player1');
+    const player1 = renderBoard(p1, axis, '');
+
+    // const restartBtn = document.querySelector('#restart');
+    // restartBtn.addEventListener('click', restartGame);
+
+    // const axisBtn = document.querySelector('#axis');
+    // axisBtn.addEventListener('click', changeAxis);
+
+});
+
 function gameStart(){
 
     const opponentBoardGrid = document.querySelector('#player2');
 
-    const opponentBoard = renderBoard(opponentBoardGrid, 'y').pBoard;
+    const opponentBoard = renderBoard(opponentBoardGrid, 'y', 'opponent').pBoard;
 
     let fleet = generateFleet().playerFleet;
 
@@ -15,32 +33,59 @@ function gameStart(){
     }
 
 
-    // opponentBoard.board.forEach((cell) => {
-
-    //     cell.element.removeEventListener('click', addShip);
-    //     cell.element.addEventListener('click', playerTurn);
-    // })
-
-
-
 }
 
 
+function opponentTurn(cell){
 
-function checkWinner(){
+    const opponentScore = 0;
 
+    if(cell.hasShip == true){
+
+        cell.element.style.backgroundColor = 'green';
+
+        opponentScore += 1;
+        declareWinner(opponentScore);
+
+    }
+
+    else if(cell.hasShip == false){
+
+        cell.element.style.backgroundColor = 'blue';
+    }
+
+    
 
 }
 
-function declareWinner(){
+function declareWinner(score){
 
+    var max = 17;
+
+    if(score == max){
+
+        //TODO: Create an element that shows the winner
+    }
 
 }
 
 function restartGame(){
 
+    location.reload();
+    return false;
 
 }
 
-export {gameStart};
+function changeAxis(){
+
+    if(axis = 'y'){
+
+        axis = 'x';
+    }
+
+    axis = 'y';
+
+}
+
+export {gameStart, opponentTurn, declareWinner, restartGame, render};
 

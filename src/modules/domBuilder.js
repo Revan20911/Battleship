@@ -6,10 +6,11 @@ import {
 from './Factories/shipFactory';
 
 import { Cells } from "./Classes/Cells";
+import { gameStart, opponentTurn} from "./Game";
 
 
 
-export const renderBoard = ((grid, axis, gameStart) =>{
+export const renderBoard = ((grid, axis,  player) =>{
 
     const board = [];
     const cols = 10;
@@ -38,7 +39,10 @@ export const renderBoard = ((grid, axis, gameStart) =>{
                 .appendChild(gridItem)
                 .className = "cell";
 
-            grid
+            
+            if(player == ''){
+
+                grid
                 .appendChild(gridItem)
                 .addEventListener('click', function addShips(){
 
@@ -56,13 +60,41 @@ export const renderBoard = ((grid, axis, gameStart) =>{
                         gameStart();
                         
                         console.log('All ships placed', count);
-
-                        
                         
                     }
                 }
 
-            });
+                });
+
+            }
+
+            else if( player == 'opponent'){
+
+                grid
+                .appendChild(gridItem)
+                .addEventListener('click', function playerTurn(){
+
+                    const playerScore = 0;
+
+                    if(cell.hasShip == true){
+                
+                        cell.element.style.backgroundColor = 'green';
+                
+                        playerScore += 1;
+                        declareWinner(playerScore);
+                
+                    }
+                
+                    else if(cell.hasShip == false){
+                
+                        cell.element.style.backgroundColor = 'blue';
+                    }
+
+                    opponentTurn()
+                
+                });
+
+            }
 
             //Creates cell objects and assigns the gridItem as the element property of the object.
             //Pushes new cell to the board array and then returns the array.
@@ -80,16 +112,5 @@ export const renderBoard = ((grid, axis, gameStart) =>{
 });
 
 
-function changeListener(grid){
-
-    
-
-
-}
-
-export const gameButtons = (() => {
-
-
-})
 
 
