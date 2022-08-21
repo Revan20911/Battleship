@@ -14,29 +14,39 @@ function gameStart(){
         shipFactory.placeOpponentShips(fleet[i], 'y', render.opponentBoard);
     }
 
+    
+
 
 }
 
 function opponentTurn(){
 
     let opponentScore = 0;
+    let count = 0;
 
-    var random = Math.floor(Math.random() * 99);
+    var random = Math.floor(Math.random() * 99)+1;
 
     let cell = render.playerBoard.pBoard.board[random];
 
-    if(cell.hasShip == true){
+    if(cell.hasShip == true && cell.isHit == false){
 
         cell.element.style.backgroundColor = 'green';
+        cell.cellHit();
 
         opponentScore += 1;
-       
 
     }
 
-    else if(cell.hasShip == false){
+    else if(cell.hasShip == false && cell.isHit == false){
 
         cell.element.style.backgroundColor = 'blue';
+        cell.cellHit();
+    }
+
+    else if(cell.isHit == true){
+        throw(drawMessage);
+        gameEnd();
+
     }
 
 }
@@ -67,6 +77,12 @@ function changeAxis(){
     }
 
     axis = 'y';
+
+}
+
+function gameEnd(){
+
+
 
 }
 

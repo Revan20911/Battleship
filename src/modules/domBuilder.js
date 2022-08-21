@@ -9,19 +9,17 @@ import { Cells } from "./Classes/Cells";
 import { gameStart, opponentTurn, declareWinner} from "./Game";
 
 
-const renderBoard = ((grid, axis,  player) =>{
+const renderBoard = ((grid, axis, player) =>{
 
     const board = [];
     const cols = 10;
     const rows = 10;
     const fleet = generateFleet().playerFleet;
-
     var count = 0;
 
     grid
         .style
         .setProperty('--grid-cols', cols);
-
     grid
         .style
         .setProperty('--grid-rows', rows);
@@ -75,18 +73,20 @@ const renderBoard = ((grid, axis,  player) =>{
 
                     let playerScore = 0;
 
-                    if(cell.hasShip == true){
+                    if(cell.hasShip == true && cell.isHit == false){
                 
                         cell.element.style.backgroundColor = 'green';
+                        cell.cellHit();
                 
                         playerScore += 1;
                         declareWinner(playerScore);
                 
                     }
                 
-                    else if(cell.hasShip == false){
+                    else if(cell.hasShip == false && cell.isHit == false){
                 
                         cell.element.style.backgroundColor = 'blue';
+                        cell.cellHit();
                     }
 
                     opponentTurn();
@@ -104,9 +104,7 @@ const renderBoard = ((grid, axis,  player) =>{
     }
 
     const pBoard = new Board(board);
-
     console.log(pBoard);
-
     return {pBoard};
 });
 
@@ -117,6 +115,10 @@ const render = (() => {
     const p1 = document.querySelector('#player1');
     const playerBoard = renderBoard(p1, axis, '');
 
+
+    // const endScreen = document.querySelector('#endScreen');
+    
+
     // const restartBtn = document.querySelector('#restart');
     // restartBtn.addEventListener('click', restartGame);
 
@@ -124,9 +126,7 @@ const render = (() => {
     // axisBtn.addEventListener('click', changeAxis);
 
     const opponentBoardGrid = document.querySelector('#player2');
-
     const opponentBoard = renderBoard(opponentBoardGrid, 'y', 'opponent').pBoard;
-
     return {opponentBoard, playerBoard};
     
 })();
