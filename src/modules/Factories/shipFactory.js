@@ -68,7 +68,7 @@ const shipFactory = (() => {
                     .push([x, y + i]);
             }
         }
-        setCells(board, fleetShip.position);
+        setCells(board, fleetShip.position, '');
     }
 
     function placeOpponentShips(fleetShip, axis, board){
@@ -175,11 +175,11 @@ const shipFactory = (() => {
 
                     board.cellShip(cell);
 
-                    // if(!player){
-                        
-                    // }
-                    cell.color();
+                    if(player == ''){
+                        cell.color();
 
+                    }
+                    
                 }
             }
         })

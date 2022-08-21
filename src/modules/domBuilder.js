@@ -6,10 +6,10 @@ import {
 from './Factories/shipFactory';
 
 import { Cells } from "./Classes/Cells";
-import { gameStart, opponentTurn, declareWinner} from "./Game";
+import { gameStart, opponentTurn, declareWinner, restartGame, updateScore} from "./Game";
 
 
-const renderBoard = ((grid, axis, player) =>{
+const renderBoard = ((grid, axis, player, score) =>{
 
     const board = [];
     const cols = 10;
@@ -71,15 +71,27 @@ const renderBoard = ((grid, axis, player) =>{
                 .appendChild(gridItem)
                 .addEventListener('click', function playerTurn(){
 
+                    
+
                     let playerScore = 0;
+                    
 
                     if(cell.hasShip == true && cell.isHit == false){
+
+                        
                 
                         cell.element.style.backgroundColor = 'green';
+
+                        updateScore(score);
+                        
+                        playerScore++;
+
+                        declareWinner(score, 'Player');
+                        
                         cell.cellHit();
                 
-                        playerScore += 1;
-                        declareWinner(playerScore);
+                        
+                        
                 
                     }
                 
@@ -88,6 +100,8 @@ const renderBoard = ((grid, axis, player) =>{
                         cell.element.style.backgroundColor = 'blue';
                         cell.cellHit();
                     }
+
+                    
 
                     opponentTurn();
                 
@@ -111,6 +125,8 @@ const renderBoard = ((grid, axis, player) =>{
 
 const render = (() => {
 
+    const pscore = document.getElementById('playerscore');
+
     const axis = 'y';
     const p1 = document.querySelector('#player1');
     const playerBoard = renderBoard(p1, axis, '');
@@ -119,14 +135,14 @@ const render = (() => {
     // const endScreen = document.querySelector('#endScreen');
     
 
-    // const restartBtn = document.querySelector('#restart');
-    // restartBtn.addEventListener('click', restartGame);
+    const restartBtn = document.querySelector('#restart');
+    restartBtn.addEventListener('click', restartGame);
 
     // const axisBtn = document.querySelector('#axis');
     // axisBtn.addEventListener('click', changeAxis);
 
     const opponentBoardGrid = document.querySelector('#player2');
-    const opponentBoard = renderBoard(opponentBoardGrid, 'y', 'opponent').pBoard;
+    const opponentBoard = renderBoard(opponentBoardGrid, 'y', 'opponent',pscore).pBoard;
     return {opponentBoard, playerBoard};
     
 })();

@@ -5,6 +5,7 @@ export class Cells{
         this.y = y;
         this.element = element;
         this.hasShip = false;
+        this.isHit = false;
         
         
     }
@@ -14,6 +15,12 @@ export class Cells{
         this.element
             .style
             .backgroundColor = 'red';
+    }
+
+    cellHit(){
+
+        this.isHit = true;
+
     }
 
 }

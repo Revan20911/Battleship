@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./dist/styles/styles.css">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
         <script src="./dist/main.js" defer></script>
         <title>Battleship</title>
     </head>
@@ -11,7 +12,16 @@
         <main>
             <div class="container">
                 <div class="board-grid" id="player1"></div>
+                
                 <div class="board-grid" id="player2"></div>
+
+                
+            </div>
+            <div class="button-container" id="winMessage"></div>
+            <div class="button-container">
+                <div class="score">Player: <span id="playerscore">0</span> </div>
+                <button class="button" id="restart">Restart Game</button>
+                <div class="score">CPU: <span id="opponentscore">0</span> </div>
             </div>
         </main>
         <footer></footer>

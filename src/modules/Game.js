@@ -3,6 +3,9 @@ import { generateFleet, shipFactory } from "./Factories/shipFactory";
 
 //TODO: Add ability to swtch the axis.
 
+let winMessage = document.querySelector('#winMessage');
+let oscore = document.querySelector('#opponentscore');
+
 let axis = 'y';
 function gameStart(){
 
@@ -14,15 +17,12 @@ function gameStart(){
         shipFactory.placeOpponentShips(fleet[i], 'y', render.opponentBoard);
     }
 
-    
-
-
 }
 
 function opponentTurn(){
 
     let opponentScore = 0;
-    let count = 0;
+    
 
     var random = Math.floor(Math.random() * 99)+1;
 
@@ -31,9 +31,13 @@ function opponentTurn(){
     if(cell.hasShip == true && cell.isHit == false){
 
         cell.element.style.backgroundColor = 'green';
+        opponentScore++;
+        updateScore(oscore);
         cell.cellHit();
 
-        opponentScore += 1;
+        declareWinner(oscore, 'CPU');
+
+        
 
     }
 
@@ -43,21 +47,18 @@ function opponentTurn(){
         cell.cellHit();
     }
 
-    else if(cell.isHit == true){
-        throw(drawMessage);
-        gameEnd();
-
-    }
+   
 
 }
 
-function declareWinner(score){
+function declareWinner(score, player){
 
-    var max = 17;
-
-    if(score == max){
+    if(score.innerHTML == 17){
 
         //TODO: Create an element that shows the winner
+        
+        console.log('Winner', score);
+        gameEnd(player);
     }
 
 }
@@ -80,11 +81,22 @@ function changeAxis(){
 
 }
 
-function gameEnd(){
+function gameEnd(player){
+
+
+    winMessage.style.display = 'flex';
+    winMessage.innerText = player + ' Wins!'; 
+    
 
 
 
 }
 
-export {gameStart, opponentTurn, declareWinner, restartGame};
+function updateScore(element){
+
+    element.innerHTML++;
+
+}
+
+export {gameStart, opponentTurn, declareWinner, restartGame, updateScore};
 
