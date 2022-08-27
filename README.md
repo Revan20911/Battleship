@@ -1,5 +1,7 @@
 # BattleShip
 
+Live Preview: https://revan20911.github.io/Battleship/
+
 ### This is a rendition of the classic BattleShip board game developed using Vanilla.js, HTML, and CSS. 
 
 
